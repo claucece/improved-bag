@@ -1,4 +1,5 @@
 import junit.framework.TestResult;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -7,10 +8,16 @@ import java.util.List;
 
 public class BagTest {
 
+    private Stack testStack = new Stack();
     private String size = "big";
     private String color = "brow";
     private List<String> testItemsOfBag = new ArrayList<>();
-    private Bag testBag = new Bag(size, color, testItemsOfBag);
+    private Bag testBag;
+
+    @Before
+    public void setUp() {
+        testBag = new Bag(size, color, testItemsOfBag);
+    }
 
     @Test
     public void shouldHaveConstructor() {
@@ -60,6 +67,12 @@ public class BagTest {
         assertTrue(testItemsOfBag.size() == 1);
         testBag.addThingsToStack("Lemba");
         assertTrue(testItemsOfBag.size() == 2);
+    }
+
+    @Test
+    public void shouldHaveStack() {
+        testBag.addThingsToStack("Phial of Galadriel");
+        assertTrue(testBag.setStack(testStack).equals(testStack));
     }
 
     @Test

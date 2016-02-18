@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Bag {
 
+    private Stack stack;
     private String size;
     private String color;
     private List<String> itemsOfBag = new ArrayList<>();
@@ -13,6 +14,12 @@ public class Bag {
         this.size = size;
         this.color = color;
         this.itemsOfBag = itemsOfBag;
+        stack = new Stack();
+    }
+
+    public Stack setStack(Stack stack) {
+        this.stack = stack;
+        return stack;
     }
 
     public String getSize() {
@@ -28,8 +35,7 @@ public class Bag {
 
     public List<String> addThingsToStack(String thingToAdd) {
         itemsOfBag.add(thingToAdd);
-        Stack stackOfBag = new Stack();
-        stackOfBag.randomizeItemsIntoStack(itemsOfBag);
+        stack.randomizeItemsIntoStack(itemsOfBag);
         return itemsOfBag;
     }
 
